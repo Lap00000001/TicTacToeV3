@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 #git commit TicTacToe.py
-#git push origin main
-#ctrl O
+# créer le message de commit
+#ctrl O (depend de nano, l'editeur de text du terminal)
 #ctrl x
+#git push origin main
 #
 #ces commandes permettent de mettre a jour le github 
 
@@ -22,10 +23,10 @@ dico =	{
   "AA":0,
   "AB":0,
   "AC":0,
-  "BA":1,
-  "BB":0,
-  "BC":0,
-  "CA":0,
+  "BA":-1,
+  "BB":-1,
+  "BC":1,
+  "CA":1,
   "CB":0,
   "CC":0
   }
@@ -46,19 +47,19 @@ print(line[2], dico['CA'], dico['CB'], dico['CC'])
 
 
 def Affichage(dico):
-    for i in dico:
-        if i==0:
-            visuel[i]=" "
-        elif i<0:
-            visuel[i]="X"
-        elif i>0:
-            visuel[i]="O"
+    for index,fruit in enumerate(dico.values()):
+            if fruit==0:
+                visuel[index]=" "
+            if fruit<0:
+                visuel[index]="X"
+            if fruit>0:
+                visuel[index]="O"
     print(" ", line[0], line[1], line[2])
-print(line[0], visuel[0], visuel[1], visuel[2])
-print(line[1], visuel[3], visuel[4], visuel[5])
-print(line[2], visuel[6], visuel[7], visuel[8])
+    print(line[0], visuel[0], visuel[1], visuel[2])
+    print(line[1], visuel[3], visuel[4], visuel[5])
+    print(line[2], visuel[6], visuel[7], visuel[8])
 
-# A FINIR Affichage(dico)
+Affichage(dico)
 
 
 
@@ -68,3 +69,9 @@ print(line[2], visuel[6], visuel[7], visuel[8])
 #print('Vous avez  ', age, 'ans')
 
 #print("\n",case['AA'])
+
+#fruits = ['pomme', 'banane', 'orange']
+#for index, fruit in enumerate(fruits):
+#    print(index, fruit)
+
+# utiliser un modulot pour rajouter un "\n" dans les printX4 pour automatiser le truc (le modulo depends de la taille du plateau, demander la taille du plateau au debut)
