@@ -1,12 +1,21 @@
 #!/usr/bin/python3
+#git commit TicTacToe.py
+#git push origin main
+#ctrl O
+#ctrl x
+#
+#ces commandes permettent de mettre a jour le github 
+
+
+# on aimerais pouvoir a termes avoir le tictactoe avec 4X4 ou 5X5 ou 6X6 ect, voir 5X6
+# Donc il va falloir penser en amont a comment on fabrique le dictionnaire a partir de 2 liste, il faudrait automatiser la création du dico,
+#  et du rendu, et du fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win"
 
 
 
 
-
-
-#dicoV qui est la partie visuel de notre morpion, ici on l'initialise.
-dicoV = (0, 0, 0, 0, 0, 0, 0, 0, 0)
+#visuel qui est la partie visuel de notre morpion, ici on l'initialise.
+visuel = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 #dico qui est le fond de notre morpion, j'ai utiliser un systéme de coordonné en ABC, qui ne parait pas trés claire ... 
 #probablement a modifier (par exemple en 1A, 2C, 3B ect, et en faisant en sort que 1A et A1 soient 2 réponse acceptable pour utiliser la premiere case)
 dico =	{
@@ -21,7 +30,7 @@ dico =	{
   "CC":0
   }
 
-#dico2 est une tentative de comprendre et d'utiliser les ** dans un dictionnaire et les tumples 
+#dico2 est une tentative de comprendre et d'utiliser les ** dans un dictionnaire et les tupples 
 #dico2 =	(**{"AA":0, "AB":-1, "AC":0}, **{"BA":1, "BB":0, "BC":0}, **{"CA":0, "CB":0, "CC":0})
 
 #la fonction ligne me sert pour faire mes coordonées, il faudras recrée une fonction colomn, et éditer les fonction suivantes (et precedente) afain qu'il y aie des coordonnées en 1A ou en A1 , est que les 2 matrice soit liéé
@@ -39,15 +48,15 @@ print(line[2], dico['CA'], dico['CB'], dico['CC'])
 def Affichage(dico):
     for i in dico:
         if i==0:
-            dicoV[i]=" "
+            visuel[i]=" "
         elif i<0:
-            dicoV[i]="X"
+            visuel[i]="X"
         elif i>0:
-            dicoV[i]="O"
+            visuel[i]="O"
     print(" ", line[0], line[1], line[2])
-print(line[0], dicoV[0], dicoV[1], dicoV[2])
-print(line[1], dicoV[3], dicoV[4], dicoV[5])
-print(line[2], dicoV[6], dicoV[7], dicoV[8])
+print(line[0], visuel[0], visuel[1], visuel[2])
+print(line[1], visuel[3], visuel[4], visuel[5])
+print(line[2], visuel[6], visuel[7], visuel[8])
 
 # A FINIR Affichage(dico)
 
