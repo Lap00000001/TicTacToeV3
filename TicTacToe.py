@@ -2,6 +2,7 @@
 #git commit TicTacToe.py
 # créer le message de commit
 #ctrl O (depend de nano, l'editeur de text du terminal)
+# touche entrée ou qqchose comme ça
 #ctrl x
 #git push origin main
 #
@@ -12,6 +13,20 @@
 # Donc il va falloir penser en amont a comment on fabrique le dictionnaire a partir de 2 liste, il faudrait automatiser la création du dico,
 #  et du rendu, et du fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win"
 
+#petit essaie de thomas pour automatiser une partie du systeme ligne colonne:
+#taille=6
+#colonne=[chr(i+65)for i in range(taille)]
+#colonne= ['A','B','C', 'D', 'E', 'F']
+#ligne=colonne[:3]  #on slice du début à trois
+#ligne #['A', 'B', 'C']
+#colonne= colonne [3:]  #on slice de 3 jusqu'à la fin
+#colonne #['D', 'E', 'F']
+#colign = [chr(i+65) for i in range (taille)]
+#ligne = colonne [:int(len(colign)/2)]  #int pour etre sur que c'est un entier, len(colign) c'est la taille de colign
+#colonne = colonne[int(len(colign)/2):]
+#print(ligne)
+#for i in colonne:
+#   print(i)
 
 
 
@@ -75,3 +90,7 @@ Affichage(dico)
 #    print(index, fruit)
 
 # utiliser un modulot pour rajouter un "\n" dans les printX4 pour automatiser le truc (le modulo depends de la taille du plateau, demander la taille du plateau au debut)
+
+fruits = ['pomme', 'banane', 'orange']
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
