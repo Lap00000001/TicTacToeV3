@@ -14,7 +14,9 @@
 #  et du rendu, et du fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win"
 
 #DONE# petit essaie de thomas pour automatiser une partie du systeme ligne colonne:
-taille=6
+print('taille du plateau ?(donnez Y pour YxY)')
+taillerequise=int(input())
+taille=int((taillerequise)*(2))
 colonne=[chr(i+65)for i in range(taille)]
 colonne #['A','B','C', 'D', 'E', 'F']
 #ligne=colonne[:3]  #on slice du début à trois
@@ -33,7 +35,11 @@ for i in ligne:
 #DONE# on à réussis à créer nos coordonnées ci dessus, il faudra lier cela au gros print de 4 ligne en bas
 
 #visuel qui est la partie visuel de notre morpion, ici on l'initialise.
-visuel = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+#visuel = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+taille2=int(taille)*int(taille)
+visuel=int(taille2)*[0]
+
+dico={}
 #dico qui est le fond de notre morpion, j'ai utiliser un systéme de coordonné en ABC, qui ne parait pas trés claire ... 
 #probablement a modifier (par exemple en 1A, 2C, 3B ect, et en faisant en sort que 1A et A1 soient 2 réponse acceptable pour utiliser la premiere case)
 #TRES IMPORTANT il faudra automatiser la génération de la liste visuel ci dessus (avec taille²) et le dico ci dessus en combinant 
@@ -49,6 +55,27 @@ visuel = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 #  "CB":0,
 #  "CC":0
 #  }
+
+#DONE# on va créer une liste qui deviendras les index de notre futur dico
+#A=[1,2,3,4]
+#B=[5,6,7,8]
+#C=[]
+#for i in range(len(A)):
+#   C.append(A[i]+B[i])
+#print(C)
+#affiche [6, 8, 10, 12]
+listeindex=[]
+for i in range(taillerequise):
+    for y in range(taillerequise):
+        listeindex.append(colonne[y]+ligne[i])
+#DONE# on va ajouter grace a cette fonction les elements de notre liste ci dessus a notre dico vide (avec la fonction  dico[listeindex[i]]=0)
+def creadico():
+    for i in range(len(listeindex)):
+        dico[listeindex[i]]=0
+creadico()
+print(dico)
+
+
 
 ## Fonction qui genere un dico en taille² (pareil avec visuel)
 
