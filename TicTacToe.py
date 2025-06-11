@@ -9,15 +9,15 @@
 #ces commandes permettent de mettre a jour le github 
 
 
-# on aimerais pouvoir a termes avoir le tictactoe avec 4X4 ou 5X5 ou 6X6 ect, voir 5X6
-# Donc il va falloir penser en amont a comment on fabrique le dictionnaire a partir de 2 liste, il faudrait automatiser la création du dico,
-#  et du rendu, et du fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win"
+#DONE# on aimerais pouvoir a termes avoir le tictactoe avec 4X4 ou 5X5 ou 6X6 ect,
+#DONE# Donc il va falloir penser en amont a comment on fabrique le dictionnaire a partir de 2 liste, il faudrait automatiser la création du dico,
+
+# et du rendu, et du fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win"
 
 #DONE# petit essaie de thomas pour automatiser une partie du systeme ligne colonne:
-print('taille du plateau ?(donnez Y pour YxY)')
-taillerequise=int(input())
-taille=int((taillerequise)*(2))
-colonne=[chr(i+65)for i in range(taille)]
+taille=int(input('donner la taille de votre morpion ?'))
+taille2=(taille*2)
+colonne=[chr(i+65)for i in range(taille2)]
 colonne #['A','B','C', 'D', 'E', 'F']
 #ligne=colonne[:3]  #on slice du début à trois
 #ligne
@@ -27,8 +27,8 @@ colonne #['A','B','C', 'D', 'E', 'F']
 #print(colonne) #['D', 'E', 'F']
 #colign=[chr(i+65)for i in range(taille)]
 #ligne=colonne[:int(len(colign)/2)]  #int pour etre sur que c'est un entier, len(colign) c'est la taille de colign
-ligne=colonne[int((taille)/2):]
-colonne = colonne[:int((taille)/2)]
+ligne=colonne[int((taille2)/2):]
+colonne = colonne[:int((taille2)/2)]
 print(colonne)
 for i in ligne:
    print(i)
@@ -36,14 +36,14 @@ for i in ligne:
 
 #visuel qui est la partie visuel de notre morpion, ici on l'initialise.
 #visuel = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-taille2=int(taille)*int(taille)
-visuel=int(taille2)*[0]
+tailleSquare=int(taille2)*int(taille2)
+visuel=int(tailleSquare)*[0]
 
 dico={}
-#dico qui est le fond de notre morpion, j'ai utiliser un systéme de coordonné en ABC, qui ne parait pas trés claire ... 
-#probablement a modifier (par exemple en 1A, 2C, 3B ect, et en faisant en sort que 1A et A1 soient 2 réponse acceptable pour utiliser la premiere case)
-#TRES IMPORTANT il faudra automatiser la génération de la liste visuel ci dessus (avec taille²) et le dico ci dessus en combinant 
-# la premiere moitié et la deuxieme moitié de la premiere itération de colonne (qu'on renommeras) pour créé les coordonée et donc le nom des index
+#dico qui est le fond de notre morpion
+
+#DONE# il faudra automatiser la génération de la liste visuel ci dessus (avec taille²) et le dico ci dessus en combinant 
+#DONE# la premiere moitié et la deuxieme moitié de la premiere itération de colonne (qu'on renommeras) pour créé les coordonée et donc le nom des index
 #dico =	{
 #  "AA":0,
 #  "AB":0,
@@ -65,26 +65,23 @@ dico={}
 #print(C)
 #affiche [6, 8, 10, 12]
 listeindex=[]
-for i in range(taillerequise):
-    for y in range(taillerequise):
+for i in range(taille):
+    for y in range(taille):
         listeindex.append(colonne[y]+ligne[i])
 #DONE# on va ajouter grace a cette fonction les elements de notre liste ci dessus a notre dico vide (avec la fonction  dico[listeindex[i]]=0)
 def creadico():
     for i in range(len(listeindex)):
         dico[listeindex[i]]=0
 creadico()
-print(dico)
-
-
-
-## Fonction qui genere un dico en taille² (pareil avec visuel)
+#DONE# Fonction qui genere un dico en taille² 
 
 #dico2 est une tentative de comprendre et d'utiliser les ** dans un dictionnaire et les tupples 
 #dico2 =	(**{"AA":0, "AB":-1, "AC":0}, **{"BA":1, "BB":0, "BC":0}, **{"CA":0, "CB":0, "CC":0})
 
-#la fonction ligne me sert pour faire mes coordonées, il faudras recrée une fonction colomn, et éditer les fonction suivantes (et precedente) afain qu'il y aie des coordonnées en 1A ou en A1 , est que les 2 matrice soit liéé
-#line = ("A","B","C")
-#on utiliseras ligne et colonne ci dessous
+#DONE# la fonction ligne me sert pour faire mes coordonées, il faudras recrée une fonction colomn, et éditer les fonction suivantes (et precedente) afain qu'il y aie des coordonnées en 1A ou en A1 , est que les 2 matrice soit liéé
+#ligne = ("A","B","C")
+#DONE# on utiliseras ligne et colonne ci dessous
+
 #ici on imprime notre morpion, pour le moment la partie graphique n'est pas présente, une fois faites, ce print disparaitras dans les limbes
 
 ##refaire le print X5 ci dessous avec line remplacé par ligne ou colonne
@@ -97,8 +94,7 @@ print(dico)
 #une fois que la fonction dico auras des 123 dans ses coordonnées, le premiers print seras le meme mais tous les "dico['AA'] deviendront "dico['_column[X]__line[Y]']
 
 #on refait la fonction ci dessus en un print:
-#####en cours #####print(" ", line)
-
+#on va créer une liste (visuelF) qui nous serviras a print seulement la notre rendu final grace a visuel qui est une liste un peu plus graphique de l'etat de notre dico
 def Affichage(dico):
     for index,fruit in enumerate(dico.values()):
             if fruit==0:
@@ -129,3 +125,8 @@ def Affichage(dico):
 #    print(index, fruit)
 
 # utiliser un modulot pour rajouter un "\n" dans les printX4 pour automatiser le truc (le modulo depends de la taille du plateau, demander la taille du plateau au debut)
+
+
+
+
+#on a remplacer taillerequise par taille, taille par taille2 et taille 2 par tailleSquare pour les appelations
