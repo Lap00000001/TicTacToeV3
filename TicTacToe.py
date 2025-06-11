@@ -16,7 +16,7 @@
 
 #DONE# petit essaie de thomas pour automatiser une partie du systeme ligne colonne:
 taille=int(input('donner la taille de votre morpion ?'))
-taille2=(taille*2)
+taille2=taille*2
 colonne=[chr(i+65)for i in range(taille2)]
 colonne #['A','B','C', 'D', 'E', 'F']
 #ligne=colonne[:3]  #on slice du début à trois
@@ -27,8 +27,8 @@ colonne #['A','B','C', 'D', 'E', 'F']
 #print(colonne) #['D', 'E', 'F']
 #colign=[chr(i+65)for i in range(taille)]
 #ligne=colonne[:int(len(colign)/2)]  #int pour etre sur que c'est un entier, len(colign) c'est la taille de colign
-ligne=colonne[int((taille2)/2):]
-colonne = colonne[:int((taille2)/2)]
+ligne=colonne[int(taille):]
+colonne = colonne[:int(taille)]
 print(colonne)
 for i in ligne:
    print(i)
@@ -36,9 +36,9 @@ for i in ligne:
 
 #visuel qui est la partie visuel de notre morpion, ici on l'initialise.
 #visuel = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-tailleSquare=int(taille2)*int(taille2)
-visuel=int(tailleSquare)*[0]
-
+tailleSquare=taille2**2
+#visuel=(tailleSquare)*[0]   facon 1 de créer visuel
+visuel=[0 for i in range(tailleSquare)]
 dico={}
 #dico qui est le fond de notre morpion
 
@@ -73,6 +73,7 @@ def creadico():
     for i in range(len(listeindex)):
         dico[listeindex[i]]=0
 creadico()
+print(dico)
 #DONE# Fonction qui genere un dico en taille² 
 
 #dico2 est une tentative de comprendre et d'utiliser les ** dans un dictionnaire et les tupples 
