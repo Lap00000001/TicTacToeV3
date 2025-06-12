@@ -54,14 +54,9 @@ def Affichage(dico):
         visuelF.append(ligne[i])
         visuelF.append(chunks[i])
     print(visuelF[:(taille+1)],"\n")
-    for i in range(1, (taille-1)):
+    for i in range(1, (taille*2), 2):
         print(visuelF[(taille+i):(taille+i+2)],"\n")
-        print(taille+i)
-        print(taille+i+2)
 Affichage(dico)
-
-# ligne 60, 61, 62, 63 n'apparaisse pas ??
-# ligne 62 et 63 sont la pour voir ce qui cloche
 
 #fruits = ['pomme', 'banane', 'orange']
 #for index, fruit in enumerate(fruits):
