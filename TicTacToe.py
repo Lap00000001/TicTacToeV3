@@ -8,8 +8,6 @@
 #
 #ces commandes permettent de mettre a jour le github 
 
-# et du rendu, et du fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win"
-
 taille=int(input('donner la taille de votre morpion ?'))
 taille2=taille*2
 colonne=[chr(i+65)for i in range(taille2)]
@@ -57,6 +55,19 @@ def Affichage(dico):
     for i in range(1, (taille*2), 2):
         print(visuelF[(taille+i):(taille+i+2)],"\n")
 Affichage(dico)
+
+
+# winCondition : fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win /// if not => draw"
+
+# toursSysteme : fonctionnement "on commence a un tour et on repette jusqu'a ce que winCondition reagisse, si winCondition [0] == true => fin du compteur de tour,
+#                   reinitialisation du compteur de tour, de dico, de visuel, visuelF et de wincond, ET demandez "voulez vous rejouer"
+
+# jouez : fonctionnement "demander au joueur x de jouer /// if wrong input => message error ET joueur x rejoue /// implémenter l'index jouer par joueur X avec -1 ET passez au joueur O
+#               demander a joueur O de jouer /// error message too /// impl l'index jouer par joueur O avec +1 ET passe au joueur suivant" Tant que windcond[1] =/= 0
+
+# Et c'est fini
+
+
 
 #fruits = ['pomme', 'banane', 'orange']
 #for index, fruit in enumerate(fruits):
