@@ -36,6 +36,20 @@ visuelF=[" "]
 def split_list(lst, chunk_size):
     return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
 
+########TEST############
+dico={"AD":0,
+      "BD":-1,
+      "CD":3,
+      "AE":-2,
+      "BE":5,
+      "CE":-6,
+      "AF":9,
+      "BF":155,
+      "CF":2
+      }
+print(dico)
+#############TEST############
+
 def Affichage(dico):
     for index,fruit in enumerate(dico.values()):
         if fruit==0:
@@ -55,19 +69,7 @@ def Affichage(dico):
         print(visuelF[(taille+i):(taille+i+2)],"\n")
 Affichage(dico)
 
-########TEST############
-dico={"AD":0,
-      "BD":1,
-      "CD":3,
-      "AE":2,
-      "BE":5,
-      "CE":6,
-      "AF":9,
-      "BF":155,
-      "CF":2
-      }
-print(dico)
-#############TEST############
+
 
 liste_cles=list(dico.keys())    #pour faire appelle aux valeurs du dico par index et non par clé
 
@@ -80,8 +82,13 @@ for i in range(taille):
     for y in range(i, taille*(taille-1)+i+1, taille):
         listesC[i].append(dico[liste_cles[y]])
 
-for i, listec in enumerate(listesC):
-    print(f"ListeC {i} : {listec}")
+for i in range(taille):
+    listesL.append([])   #on ajoute une nouvelle liste vide à chaque itération
+    for y in range(i, i+taille, 1):
+        listesL[i].append(dico[liste_cles[y]])
+
+for i, listel in enumerate(listesL):
+    print(f"ListeL {i} : {listel}")
 
 # winCondition : fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win /// if not => draw"
 
