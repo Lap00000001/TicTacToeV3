@@ -9,8 +9,7 @@
 #ces commandes permettent de mettre a jour le github 
 
 taille=int(input('donner la taille de votre morpion ?'))
-taille2=taille*2
-colonne=[chr(i+65)for i in range(taille2)]
+colonne=[chr(i+65)for i in range(taille*2)]
 colonne
 ligne=colonne[int(taille):]
 colonne = colonne[:int(taille)]
@@ -18,7 +17,7 @@ print(colonne)
 for i in ligne:
    print(i)
 
-tailleSquare=taille2**2
+tailleSquare=taille**2
 visuel=[0 for i in range(tailleSquare)]
 dico={}
 listeindex=[]
@@ -29,7 +28,7 @@ def creadico():
     for i in range(len(listeindex)):
         dico[listeindex[i]]=0
 creadico()
-print(dico)
+print(dico)         ##################
 
 visuelF=[" "]
 
@@ -78,7 +77,7 @@ listesL=[]
 listesD=[]
 for i in range(taille):
     listesC.append([])   #on ajoute une nouvelle liste vide à chaque itération
-    for y in range(i-1, taille*(taille-1)+(i-1), taille):
+    for y in range(i, taille*(taille-1)+i+1, taille):
         listesC[i].append(dico[liste_cles[y]])
 
 for i, listec in enumerate(listesC):
