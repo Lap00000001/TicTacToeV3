@@ -29,11 +29,9 @@ colonne=[chr(i+65)for i in range(taille*2)]
 colonne
 ligne=colonne[int(taille):]
 colonne = colonne[:int(taille)]
-#print(colonne)                                         ##########              
-#for i in ligne:                                        ##########
-#   print(i)                                            ##########
 tailleSquare=taille**2
 visuel=[0 for i in range(tailleSquare)]
+
 dico={}
 listeindex=[]
 for i in range(taille):
@@ -43,25 +41,10 @@ def creadico():
     for i in range(len(listeindex)):
         dico[listeindex[i]]=0
 creadico()
-#print(dico)                                            ##########
-liste_cles=list(dico.keys())    #pour faire appelle aux valeurs du dico par index et non par clé
-
-
-
+liste_cles=list(dico.keys())
 def split_list(lst, chunk_size):
     return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
 
-#dico={"AD":0,                                          ##########
-#      "BD":-1,                                         ##########
-#      "CD":1,                                          ##########
-#      "AE":-1,                                         ##########
-#      "BE":1,                                          ##########
-#      "CE":-1,                                         ##########
-#      "AF":1,                                          ##########
-#      "BF":0,                                          ##########
-#      "CF":1                                           ##########
-#      }                                                ##########
-#print(dico)                                            ##########
 #----------------------------------------------------------Block tour-----------------------------------------------------
 def fTour():
     tour=tour+1
@@ -92,38 +75,28 @@ def Affichage(dico):
     print(visuelF[:(taille+1)],"\n")
     for i in range(1, (taille*2), 2):
         print(visuelF[(taille+i):(taille+i+2)],"\n")
-#Affichage(dico)                                     ##########
 
 #-----------------------------------------------------Block winCondition-----------------------------------------------------
 for i in range(taille):
-    listesC.append([])   #on ajoute une nouvelle liste vide à chaque itération
+    listesC.append([])
     for y in range(i, taille*(taille-1)+i+1, taille):
         listesC[i].append(dico[liste_cles[y]])
-
 for i in range(taille):
     listesL.append([])
     for y in range(taille*i, taille*(i+1), 1):
         listesL[i].append(dico[liste_cles[y]])
-
 for y in range(taille):
     listeD_0.append(dico[liste_cles[(y+1)*(taille-1)]])
 for y in range(taille):
     listeD_1.append(dico[liste_cles[y*(taille+1)]])
-#for i, listec in enumerate(listesC):                ##########
-#    print(f"ListeC {i} : {listec}")                 ##########
-#for i, listel in enumerate(listesL):                ##########
-#    print(f"ListeL {i} : {listel}")                 ##########
-#print("ListeD_0 :", listeD_0)                       ##########
-#print("ListeD_1 :", listeD_1)                       ##########
 for i in range(len(listesC)):
     listeWin.append(listesC[i])
 for i in range(len(listesL)):
     listeWin.append(listesL[i])
 listeWin.append(listeD_0)
 listeWin.append(listeD_1)
-#print(listeWin)                                     ##########
 sumListeWin=[sum(sous_liste) for sous_liste in listeWin]
-#print(sumListeWin)                                  ##########
+
 def winCondition():
     #Draw
     if fTour == tailleSquare:
@@ -163,7 +136,5 @@ def run1():
         playme
         wrongK==0
 run1
-# jouez : fonctionnement "demander au joueur x de jouer /// if wrong input => message error ET joueur x rejoue /// implémenter l'index jouer par joueur X avec -1 ET passez au joueur O
-#               demander a joueur O de jouer /// error message too /// impl l'index jouer par joueur O avec +1 ET passe au joueur suivant" Tant que windcond =/= 0
 
-# demandez "voulez vous rejouer" (if wincond == 1 => ...)
+# demandez  (if wincond == 1 => )"voulez vous rejouer" et réinitialiser
