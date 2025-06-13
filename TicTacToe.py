@@ -13,9 +13,9 @@ colonne=[chr(i+65)for i in range(taille*2)]
 colonne
 ligne=colonne[int(taille):]
 colonne = colonne[:int(taille)]
-print(colonne)
-for i in ligne:
-   print(i)
+#print(colonne)         ##################
+#for i in ligne:
+#   print(i)
 
 tailleSquare=taille**2
 visuel=[0 for i in range(tailleSquare)]
@@ -28,11 +28,10 @@ def creadico():
     for i in range(len(listeindex)):
         dico[listeindex[i]]=0
 creadico()
-print(dico)         ##################
+#print(dico)         ##################
 
 visuelF=[" "]
 
-#pas sur d'avoir compris thaumaturge ce que je viens de copier dans les 2 lignes du dessous
 def split_list(lst, chunk_size):
     return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
 
@@ -76,19 +75,29 @@ liste_cles=list(dico.keys())    #pour faire appelle aux valeurs du dico par inde
 
 listesC=[]
 listesL=[]
-listesD=[]
+listeD_0=[]
+listeD_1=[]
 for i in range(taille):
     listesC.append([])   #on ajoute une nouvelle liste vide à chaque itération
     for y in range(i, taille*(taille-1)+i+1, taille):
         listesC[i].append(dico[liste_cles[y]])
 
 for i in range(taille):
-    listesL.append([])   #on ajoute une nouvelle liste vide à chaque itération
-    for y in range(i, i+taille, 1):
+    listesL.append([])
+    for y in range(taille*i, taille*(i+1), 1):
         listesL[i].append(dico[liste_cles[y]])
 
-for i, listel in enumerate(listesL):
+for y in range(taille):
+    listeD_0.append(dico[liste_cles[(y+1)*(taille-1)]])
+for y in range(taille):
+    listeD_1.append(dico[liste_cles[y*(taille+1)]])
+
+for i, listec in enumerate(listesC):                ##########
+    print(f"ListeC {i} : {listec}")
+for i, listel in enumerate(listesL):                ##########
     print(f"ListeL {i} : {listel}")
+print(listeD_0)
+print(listeD_1)
 
 # winCondition : fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win /// if not => draw"
 
