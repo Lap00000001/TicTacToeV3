@@ -56,14 +56,42 @@ def Affichage(dico):
         print(visuelF[(taille+i):(taille+i+2)],"\n")
 Affichage(dico)
 
+########TEST############
+dico={"AD":0,
+      "BD":1,
+      "CD":3,
+      "AE":2,
+      "BE":5,
+      "CE":6,
+      "AF":9,
+      "BF":155,
+      "CF":2
+      }
+print(dico)
+#############TEST############
+
+liste_cles=list(dico.keys())    #pour faire appelle aux valeurs du dico par index et non par clé
+
+
+listesC=[]
+listesL=[]
+listesD=[]
+for i in range(taille):
+    listesC.append([])   #on ajoute une nouvelle liste vide à chaque itération
+    for y in range(i-1, taille*(taille-1)+(i-1), taille):
+        listesC[i].append(dico[liste_cles[y]])
+
+for i, listec in enumerate(listesC):
+    print(f"ListeC {i} : {listec}")
 
 # winCondition : fonctionnement "3 en ligne, 3 en column, ou 3 en diagonal => win /// if not => draw"
 
-# toursSysteme : fonctionnement "on commence a un tour et on repette jusqu'a ce que winCondition reagisse, si winCondition [0] == true => fin du compteur de tour,
+
+# toursSysteme : fonctionnement "on commence a un tour et on repette jusqu'a ce que winCondition reagisse, si winCondition == true => fin du compteur de tour,
 #                   reinitialisation du compteur de tour, de dico, de visuel, visuelF et de wincond, ET demandez "voulez vous rejouer"
 
 # jouez : fonctionnement "demander au joueur x de jouer /// if wrong input => message error ET joueur x rejoue /// implémenter l'index jouer par joueur X avec -1 ET passez au joueur O
-#               demander a joueur O de jouer /// error message too /// impl l'index jouer par joueur O avec +1 ET passe au joueur suivant" Tant que windcond[1] =/= 0
+#               demander a joueur O de jouer /// error message too /// impl l'index jouer par joueur O avec +1 ET passe au joueur suivant" Tant que windcond =/= 0
 
 # Et c'est fini
 
