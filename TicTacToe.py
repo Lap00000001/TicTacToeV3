@@ -9,14 +9,7 @@
 #ces commandes permettent de mettre a jour le github 
 
 #-----------------------------------------------------Block init & variable-----------------------------------------------------
-sumListeWin=[]
-listeWin=[]
-listesC=[]
-listesL=[]
-listeD_0=[]
-listeD_1=[]
 alreadyPlayed=[]
-wrongK=0
 
 taille=int(input('donner la taille de votre morpion ?'))
 colonne=[chr(i+65)for i in range(taille*2)]
@@ -61,33 +54,40 @@ def Affichage(dico):
     for i in range(1, (taille*2), 2):
         print(visuelF[(taille+i):(taille+i+2)],"\n")
 #-----------------------------------------------------Block winCondition-----------------------------------------------------
-for i in range(taille):
-    listesC.append([])
-    for y in range(i, taille*(taille-1)+i+1, taille):
-        listesC[i].append(dico[liste_cles[y]])
-for i in range(taille):
-    listesL.append([])
-    for y in range(taille*i, taille*(i+1), 1):
-        listesL[i].append(dico[liste_cles[y]])
-for y in range(taille):
-    listeD_0.append(dico[liste_cles[(y+1)*(taille-1)]])
-for y in range(taille):
-    listeD_1.append(dico[liste_cles[y*(taille+1)]])
-for i in range(len(listesC)):
-    listeWin.append(listesC[i])
-for i in range(len(listesL)):
-    listeWin.append(listesL[i])
-listeWin.append(listeD_0)
-listeWin.append(listeD_1)
-sumListeWin=[sum(sous_liste) for sous_liste in listeWin]
 
 def winCondition(t):
+    sumListeWin=[]
+    listeWin=[]
+    listesC=[]
+    listesL=[]
+    listeD_0=[]
+    listeD_1=[]
+    for i in range(taille):
+        listesC.append([])
+        for y in range(i, taille*(taille-1)+i+1, taille):
+            listesC[i].append(dico[liste_cles[y]])
+    for i in range(taille):
+        listesL.append([])
+        for y in range(taille*i, taille*(i+1), 1):
+            listesL[i].append(dico[liste_cles[y]])
+    for y in range(taille):
+        listeD_0.append(dico[liste_cles[(y+1)*(taille-1)]])
+    for y in range(taille):
+        listeD_1.append(dico[liste_cles[y*(taille+1)]])
+    for i in range(len(listesC)):
+        listeWin.append(listesC[i])
+    for i in range(len(listesL)):
+        listeWin.append(listesL[i])
+    listeWin.append(listeD_0)
+    listeWin.append(listeD_1)
+    sumListeWin=[sum(sous_liste) for sous_liste in listeWin]
     #Draw
-    if t == tailleSquare:
+    if t >= tailleSquare:
         print(f"Draw, {t} have been played")
         return 1
     #Win
     for i in range(len(sumListeWin)):
+        print(sumListeWin[i])
         if sumListeWin[i]==taille:
             print("Player 2 won")
             return 1
@@ -112,7 +112,6 @@ def choice(p,listp):
         maReponse = input(f"Player {p2display} chooses a play, please:  ")
         isRepInDic=(dico.get(maReponse) == None)
         isAlreadyPlay=(maReponse  in alreadyPlayed)
-    print(alreadyPlayed)
     return maReponse
 #-----------------------------------------------------Block Playing-----------------------------------------------------
 def playme(reponse,nPlayer):
@@ -121,23 +120,21 @@ def playme(reponse,nPlayer):
 
 def run1():
     tour=0
-    win=0
+    win=False
     players={'player 1' :-1, 'player 2' :+1}
     player=players['player 2']
-    while win==0:
+    while win==False:
         Affichage(dico)
         fTour= 1 if tour%2==0 else 0
         maReponse=choice(player, players)
         playme(maReponse,player)
         tour+=1     #compteur de tour (tour=tour+1)
+        winCondition(tour)
+        win=winCondition(tour)
         if fTour == 1:
             player=players['player 1']
         if fTour == 0:
-            player=players['player 2']
-        winCondition(tour)
-        win=winCondition(tour)
-        wrongK==0
-        
+            player=players['player 2']        
 run1()
 
 
