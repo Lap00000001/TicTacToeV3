@@ -87,7 +87,6 @@ def winCondition(t):
         return 1
     #Win
     for i in range(len(sumListeWin)):
-        print(sumListeWin[i])
         if sumListeWin[i]==taille:
             print("Player 2 won")
             return 1
@@ -129,7 +128,6 @@ def run1():
         maReponse=choice(player, players)
         playme(maReponse,player)
         tour+=1     #compteur de tour (tour=tour+1)
-        winCondition(tour)
         win=winCondition(tour)
         if fTour == 1:
             player=players['player 1']
