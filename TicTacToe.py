@@ -82,8 +82,8 @@ def winCondition(t):
     listeWin.append(listeD_1)
     sumListeWin=[sum(sous_liste) for sous_liste in listeWin]
     #Draw
-    if t >= tailleSquare:
-        print(f"Draw, {t} have been played")
+    if t > tailleSquare:
+        print(f"Draw, {t-1} turns have been played")
         return 1
     #Win
     for i in range(len(sumListeWin)):
@@ -132,8 +132,12 @@ def run1():
         if fTour == 1:
             player=players['player 1']
         if fTour == 0:
-            player=players['player 2']        
+            player=players['player 2']     
+        if tour==tailleSquare:
+            tour+=1
+            win=winCondition(tour)   #pour que le draw soit possible
 run1()
 
 
 # demandez  (if wincond == 1 => )"voulez vous rejouer" et réinitialiser
+# si pas un int pour "quelle est la taille", renvoyer message error et redemander
